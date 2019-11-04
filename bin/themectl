@@ -1,0 +1,39 @@
+#!/bin/bash
+
+#Set Dark or Light variant of a theme on Gnome
+
+set -e
+
+FILE=$HOME/.config/gtk-3.0/settings.ini
+
+case $1 in 
+	
+	"" | "help" | "-h")
+		printf "Usage: [-h,help] [-d,dark] [-l,light] [-s,switch]\n"
+		exit $?
+		;;
+	
+	"dark" | "-d")
+		VAR=1
+		THEME="Dark"
+		;;
+	
+	"light" | "-l")
+		VAR=0
+		THEME="Light"
+		;;
+	
+	"switch" | "-s")
+		if [ "$(cat $FILE | grep -o 0)" = "0" ]; then
+			VAR=1
+			THEME="Dark"
+		elif [ "$(cat $FILE | grep -o 1)" = "1" ]; then
+			VAR=0
+			THEME="Light"
+		fi
+		;;
+	
+esac
+
+printf "[Settings]\ngtk-application-prefer-dark-theme=$VAR\n" > $FILE
+printf "$THEME theme set\n"

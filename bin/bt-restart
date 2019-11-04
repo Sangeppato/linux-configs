@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e
+
+sudo systemctl stop bluetooth.service
+sudo rmmod btusb
+sudo rmmod btintel
+sudo rmmod btbcm
+sudo rmmod btrtl
+
+sudo modprobe btrtl
+sudo modprobe btbcm
+sudo modprobe btintel
+sudo modprobe btusb
+sudo systemctl start bluetooth.service
+rfkill unblock bluetooth

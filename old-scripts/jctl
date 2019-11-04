@@ -1,0 +1,53 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+
+	"" | "help" | "h")
+		printf "Usage: [start] [stop] [-t,toggle]\n"
+		;;
+
+	"start")
+		if [[ $(jack_control status | grep -o stopped) == "stopped" ]]; then
+			jack_control start
+			if [[ $(jack_control status | grep started) == "started" ]]; then
+				printf "Setting 'performance' governor\n"
+				sudo cpupower frequency-set -g performance
+			fi	
+		elif [[ $(jack_control status | grep -o started) == "started" ]]; then
+			printf "Jack is already running\n"
+		else
+			sudo cpupower frequency-set -g powersave
+		fi
+		;;
+
+	"stop")
+		if [[ $(jack_control status | grep -o started) == "started" ]]; then
+			printf "Setting 'powersave' governor\n"
+			sudo cpupower frequency-set -g powersave
+			jack_control stop
+		elif [[ $(jack_control status | grep -o stopped) == "stopped" ]]; then
+			printf "Jack is not running\n"
+		else
+			sudo cpupower frequency-set -g powersave
+		fi
+		;;
+
+	"toggle" | "-t")
+		if [[ $(jack_control status | grep -o stopped) == "stopped" ]]; then
+			jack_control start
+			if [[ $(jack_control status | grep started) == "started" ]]; then
+				printf "Setting 'performance' governor\n"
+				sudo cpupower frequency-set -g performance
+			fi	
+		elif [[ $(jack_control status | grep -o started) == "started" ]]; then
+			printf "Setting 'powersave' governor\n"
+			sudo cpupower frequency-set -g powersave
+			jack_control stop
+		else
+			sudo cpupower frequency-set -g powersave
+		fi
+		;;
+
+esac

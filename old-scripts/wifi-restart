@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+
+sudo systemctl stop NetworkManager.service
+sudo rmmod ath10k_pci
+sudo modprobe ath10k_pci
+sudo systemctl start NetworkManager.service
+rfkill unblock wifi

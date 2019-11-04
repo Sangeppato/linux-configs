@@ -1,0 +1,11 @@
+# ===============
+# === Display ===
+# ===============
+
+# Set the display options
+
+# === Built-in ===
+output eDP-1 pos 0 0 
+
+# === HDMI ===
+#output HDMI-A-1 pos 0 0

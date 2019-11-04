@@ -1,0 +1,25 @@
+#!/bin/bash
+
+#Turn ON and OFF the Nvidia GPU using bbswitch
+
+case $1 in
+	
+	"" | "help" | "-h")
+		echo Usage: [-h,help] [on] [off] [-s,status]
+		;;
+	
+	"on")
+		sudo tee /proc/acpi/bbswitch <<< ON
+		;;
+	
+	"off")  
+		sudo rmmod nvidia_uvm
+		sudo rmmod nvidia
+		sudo tee /proc/acpi/bbswitch <<< OFF
+		;;
+	
+	"status" | "-s")
+		cat /proc/acpi/bbswitch
+		;;
+	
+esac

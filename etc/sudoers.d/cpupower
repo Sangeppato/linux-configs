@@ -1,0 +1,2 @@
+<username> ALL=(root) NOPASSWD: /usr/bin/cpupower frequency-set -g powersave, /usr/bin/cpupower frequency-set -g performance
+<username> ALL=(root) NOPASSWD: /usr/bin/cpupower frequency-set --governor powersave, /usr/bin/cpupower frequency-set --governor performance

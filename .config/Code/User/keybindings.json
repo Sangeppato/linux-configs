@@ -1,0 +1,27 @@
+// Place your key bindings in this file to overwrite the defaultsauto[]
+[
+    {
+        "key": "ctrl+[Semicolon]",
+        "command": "workbench.action.terminal.toggleTerminal"
+    },
+    {
+        "key": "ctrl+shift+[BracketRight]",
+        "command": "editor.action.fontZoomIn"
+    },
+    {
+        "key": "ctrl+shift+-",
+        "command": "editor.action.fontZoomOut"
+    },
+    {
+        "key": "ctrl+shift+alt+-",
+        "command": "workbench.action.navigateForward"
+    },
+    {
+        "key": "ctrl+shift+-",
+        "command": "-workbench.action.navigateForward"
+    },
+    {
+        "key": "ctrl+shift+numpad0",
+        "command": "editor.action.fontZoomReset"
+    }
+]

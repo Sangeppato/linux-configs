@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+
+sudo systemctl stop bluetooth.service
+sudo rmmod btusb
+sudo modprobe btusb
+sudo systemctl start bluetooth.service
+rfkill unblock bluetooth

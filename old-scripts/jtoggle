@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+
+if [[ $(jack_control status | grep -o stopped) == "stopped" ]]; then
+	jack_control start
+elif [[ $(jack_control status | grep -o started) == "started" ]]; then
+	jack_control stop
+fi

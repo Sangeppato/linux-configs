@@ -1,0 +1,43 @@
+#!/bin/bash
+
+set -e
+
+GOVERNOR_PATH="/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"
+GOVERNOR=$(cat "$GOVERNOR_PATH")
+
+case $1 in
+	
+	"powersave")
+		if [ "$GOVERNOR" != "powersave" ]; then
+			sudo cpupower frequency-set -g powersave
+			GOVERNOR=$(cat "$GOVERNOR_PATH")
+			if [ "$GOVERNOR" = "powersave" ]; then
+				echo "--- POWERSAVE ---"
+			else
+				echo "Failed to set governor"
+			fi
+		fi
+		;;
+	
+	"performance")
+		if [ "$GOVERNOR" != "performance" ]; then
+			sudo cpupower frequency-set -g performance
+			GOVERNOR=$(cat "$GOVERNOR_PATH")
+			if [ "$GOVERNOR" = "performance" ]; then
+				echo "--- PERFORMANCE ---"
+			else
+				echo "Failed to set governor"
+			fi
+		fi
+		;;
+	
+	"status")
+		echo "--- STATUS ---"
+		printf "$GOVERNOR\n"
+		;;
+	
+	*)
+		printf "Usage: [powersave] [performance] [status]\n"
+		;;
+	
+esac

@@ -1,0 +1,11 @@
+# ==================
+# === Background ===
+# ==================
+
+# Set Background and display without messing with the main config file
+
+# Set background
+set $background /home/lorenzo/Pictures/Wallpapers/wp2672838.jpg
+
+# Set lockscreen
+set $Locker swaylock -i /home/lorenzo/Pictures/Wallpapers/vector-wallpaper-21135-21672-hd-wallpapers.jpg

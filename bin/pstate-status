@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -e
+
+PSTATE_PATH="/sys/devices/system/cpu/intel_pstate"
+STATUS=$(cat "$PSTATE_PATH/status")
+MIN=$(cat "$PSTATE_PATH/min_perf_pct")
+MAX=$(cat "$PSTATE_PATH/max_perf_pct")
+NO_TURBO=$(cat "$PSTATE_PATH/no_turbo")
+
+if [ $STATUS = active ]; then
+	printf "Min: $MIN\n"
+	printf "Max: $MAX\n"
+	printf "Turbo: "
+	if [ $NO_TURBO = 0 ]; then
+		printf "enabled\n"
+	else
+		printf "disabled\n"
+	fi
+else
+	printf "P-state not active\n"
+fi

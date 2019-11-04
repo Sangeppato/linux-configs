@@ -1,0 +1,23 @@
+{
+	"window.menuBarVisibility": "toggle",
+	"editor.fontFamily": "'Ubuntu Mono','Liberation Mono'",
+	"editor.fontSize": 18,
+	"editor.fontWeight": "bold",
+	"terminal.integrated.fontFamily": "'Ubuntu Mono','Liberation Mono','Powerline Symbols'",
+	"terminal.integrated.fontSize": 18,
+	"terminal.integrated.fontWeight": "bold",
+	"editor.mouseWheelZoom": true,
+	"markdown.preview.fontSize": 18,
+	"editor.suggestSelection": "first",
+	"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+	"workbench.startupEditor": "newUntitledFile",
+	"window.zoomLevel": 0,
+	"files.exclude": {
+		"**/.classpath": true,
+		"**/.project": true,
+		"**/.settings": true,
+		"**/.factorypath": true
+	},
+	"workbench.colorTheme": "Gruvbox Dark Hard",
+	"workbench.iconTheme": "material-icon-theme"
+}

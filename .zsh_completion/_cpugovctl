@@ -1,0 +1,3 @@
+#compdef cpugovctl
+
+_arguments "1: :(powersave performance status)"
